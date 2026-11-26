@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --background: #f8f9fd;
+  --foreground: #10295d;
+  --card: #ffffff;
+  --muted: #edf2fb;
+  --muted-foreground: #68789e;
+  --border: #b8c5df;
+  --primary: #818cf8;
+  --primary-hover: #707de9;
+  --primary-foreground: #10295d;
+  --primary-soft: #dce7fa;
+  --sidebar: #e3ebfa;
+  --ring: #5265d8;
+  --high: #a63a3a;
+  --high-soft: #f9e8e8;
+  --mod: #8a5b12;
+  --mod-soft: #fbf0d8;
+  --low: #26715a;
+  --low-soft: #e3f3ed;
+  --info: #405cc7;
+  --info-soft: #e8ecff;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-high: var(--high);
+  --color-high-soft: var(--high-soft);
+  --color-mod: var(--mod);
+  --color-mod-soft: var(--mod-soft);
+  --color-low: var(--low);
+  --color-low-soft: var(--low-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+html {
+  scroll-behavior: smooth;
+}
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 1px;
+}
+tr[tabindex]:focus-visible {
+  outline-offset: -3px;
+}
+::selection {
+  background: var(--primary-soft);
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+*:hover {
+  scrollbar-color: var(--border) transparent;
+}
+@keyframes cg-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cg-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes cg-drawer-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes cg-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes cg-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes cg-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes cg-bar-in {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.cg-page-enter {
+  animation: cg-page-in 420ms var(--ease-out) both;
+}
+.cg-backdrop {
+  animation: cg-fade-in 180ms ease-out both;
+}
+.cg-drawer {
+  animation: cg-drawer-in 320ms var(--ease-out) both;
+}
+.cg-modal {
+  animation: cg-modal-in 240ms var(--ease-out) both;
+}
+.cg-toast {
+  animation: cg-toast-in 260ms var(--ease-out) both;
+}
+.cg-bar {
+  transform-origin: left;
+  animation: cg-bar-in 650ms var(--ease-out) both;
+}
+.cg-panel {
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+@media (hover: hover) {
+  .cg-panel:hover {
+    border-color: color-mix(in srgb, var(--primary) 45%, var(--border));
+    box-shadow: 0 8px 24px rgb(16 41 93 / 0.06);
+  }
+}
+
+:where(button, a, input, select, textarea) {
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+:where(button, a):active {
+  transform: translateY(1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

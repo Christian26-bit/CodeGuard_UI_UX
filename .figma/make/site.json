@@ -1,0 +1,10 @@
+{
+  "description": "Supports instructors in reviewing Python and Java code submissions by analyzing similarity and authorship evidence to aid academic integrity decisions.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
